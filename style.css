@@ -53,6 +53,26 @@ img {
     margin-top: .5em;
 }
 
+ul, ol { margin: 0 0 var(--lh) 2ch }
+
+ul { list-style: none }
+
+ul li { text-indent: -2ch }
+
+ul li:before { content: "* " }
+
+ol {
+    list-style: none;
+    counter-reset: item;
+}
+
+ol li {
+    counter-increment: item;
+    text-indent: -2ch;
+}
+
+ol li:before { content: counter(item) ". " }
+
 a:active i { border: none }
 
 h1, p, nav { margin-bottom: var(--lh) }

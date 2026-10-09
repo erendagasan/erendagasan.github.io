@@ -52,7 +52,7 @@
         <p>///instruction fetch</p>
         <p>
         we've a rom module which has 64kb available space to store our instructions. in every clock cycle we should be able to fetch an instruction from our rom by 
-        our "program counter (pc)" address to execute it. 
+        using our "program counter (pc)" address to execute it. 
         it gets tricky when we have branches and "jump and link" instructions since they require special update to our pc address.
         branches basically tell the program where it should go next if the conditions are met or not.
         jump and link instructions are used to execute functions then go on with the rest of the program by saving where it started in the first place to a register.
@@ -61,11 +61,19 @@
         <p>
         in short we can say that we save our main program in a module called rom. instead of using limited lut resources to store our instructions, this module was supposed to 
         synthesize into a "bram" block which consists of dedicated on-chip sram blocks. but bram module in artix 7 fpga has some requirements to be used.
-        the designer, has to design the read and write operations in a synchronous (clocked) way. otherwise synthesizer uses luts to implement a data storage like lutram. 
+        the designer, has to design the read and write operations in a synchronous (clocked) way. otherwise synthesizer uses luts to implement a data storage like 
+        <a class="inline" href="https://docs.amd.com/r/en-US/am005-versal-clb/LUTRAM"><i>lutram.</i></a> 
         the main design problem is we should be able to receive the instruction within same clock signal where pc changed since we are building a single clock cycle processor.
-        so that's why i designed the rom in a combinational way to make the instruction available instant after pc changes. this use a lot more resources since rom is not 
+        so that's why i designed the rom in a combinational way to make the instruction available instant after pc changes. this design uses a lot more resources since rom is not 
         synthesizing into a bram.
         </p>
+
+        <p>
+        this makes our core use too much energy, to not meet with time constraints, to not being implemented on the fpga since it uses too much resource.
+        </p>
+        
+        <img src="img/rom.jpeg" alt=":/">
+        <p class="caption">:/</p>
         
 
         <time>2026-05-21</time>

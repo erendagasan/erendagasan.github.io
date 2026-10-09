@@ -25,12 +25,29 @@
         <img src="img/7.jpeg" alt="classifying 7 as 7 :)">
         <p class="caption">classifying 7 as 7 :)</p>
 
-        <p>*achieving single cycle execution*</p>
+        <p>//achieving single cycle execution</p>
 
         <p>a single cycle risc-v processor executes an entire instruction from the 
-        <a class="inline" href="https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html"><i>rv32i instruction set.</i></a>
-        in one clock cycle.
+        <a class="inline" href="https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html"><i>rv32i instruction set</i></a>
+        in one clock cycle. in my case the instruction set was not rv32i but rv32im. the difference is you have the multiplication and division instructions on 
+        top of integer operations. 
+        i'll explain the details later why we needed the "m" operations.
         </p>
+
+        <p>
+        in every clock cycle our processor does below operations:
+        </p>
+
+        <p>
+            <ol>
+                <li>instruction fetch</li> 
+                <li>decode</li>
+                <li>execute</li>
+                <li>memory access</li>
+                <li>writeback</li>
+            </ol>
+        </p>
+        
 
         <time>2026-05-21</time>
     </main>

@@ -40,6 +40,18 @@ a.inline {
 
 a i { border-bottom: 1px dotted }
 
+img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.caption {
+    color: #888;
+    text-align: center;
+    margin-top: .5em;
+}
+
 a:active i { border: none }
 
 h1, p, nav { margin-bottom: var(--lh) }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>mnist on risc-v.</title>
+    <title>mnist classifier on custom risc-v.</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -11,12 +11,31 @@
         <h1>mnist classifier on custom risc-v.</h1>
         <p>-</p>
 
-        <p>i made a <a class="inline" href="https://en.wikipedia.org/wiki/MNIST_database"><i>mnist</i></a> classifier which runs on custom risc-v core.</p>
-        
+        <p>
+        i made a <a class="inline" href="https://en.wikipedia.org/wiki/MNIST_database"><i>mnist</i></a> classifier which runs on custom risc-v core. 
+        the core itself is running on basys3 fpga.
+        </p>
+
+        <p>
+        it all started with my desire to run a risc-v core on fpga then play <a class="inline" href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)"><i>doom</i></a> 
+        on it but it turned out that this is not the easiest task to start learning systemverilog and 
+        hardware design. so i ended up designing a core to run a simple mlp model on it.
+        </p>
+
+        <img src="img/7.jpeg" alt="classifying 7 as 7 :)">
+
+        <p>*achieving single cycle execution*</p>
+
+        <p>a single cycle risc-v processor executes an entire instruction from the 
+        <a href="https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html"><i>rv32i instruction set.</i></a>
+        in one clock cycle.
+        </p>
+
         <time>2026-05-21</time>
     </main>
     <footer>
         <p><a href="../index.html"><i>../</i></a></p>
     </footer>
+    <script src="../script.js"></script>
 </body>
 </html>

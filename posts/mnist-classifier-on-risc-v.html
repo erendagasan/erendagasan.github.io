@@ -26,7 +26,7 @@
         <img src="img/7.jpeg" alt="classifying 7 as 7 :)">
         <p class="caption">classifying 7 as 7 :)</p>
 
-        <p>//achieving single cycle execution</p>
+        <p>// achieving single cycle execution</p>
 
         <p>a single cycle risc-v processor executes an entire instruction from 
         <a class="inline" href="https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html"><i>rv32i instruction set</i></a>
@@ -45,11 +45,11 @@
                 <li>decode</li>
                 <li>execute</li>
                 <li>memory access</li>
-                <li>writeback</li>
+                <li>write back</li>
             </ol>
         </p>
 
-        <p>///instruction fetch</p>
+        <p>/// instruction fetch</p>
         <p>
         we've a rom module which has 64kb available space to store our instructions. in every clock cycle we should be able to fetch an instruction from our rom by 
         using our "program counter (pc)" address to execute it. 
@@ -74,12 +74,50 @@
         
         <img src="img/rom.jpeg" alt=":/">
         <p class="caption">:/</p>
+       
+
+        <p>/// decode</p>
+        <p>
+        decode step is pretty straightforward. we divide the instruction into parts that we're going to use with our different operations.
+        this logic is also implemented in combinational circuit since decoded information
+        has to be available to use after fetching the instruction, within the same clock cycle.
+        </p>
         
+        
+        <p>/// execute, memory, write back</p>
+        <p>
+        we complete all these three steps in one procedural block. we execute the instruction then write the value back into the destination register.  
+        this design also has its own flaws. the data from memory has to arrive processor, or reach ram within same clock cycle. as you can guess this causes clock frequency to
+        decrease. 
+        </p>
+
+        <p>
+        for example: load operations from ram takes two turns. we send address to ram, ram gets the address then sends the data back to processor, processor writes the data into 
+        destination register. no wonder why this design can't catch up with the clock frequency. 
+        </p>
+
+        <img src="img/timing.png" alt="timing">
+        <p class="caption">no slack</p>
+
+        <p>
+        i've also experienced the same issue with ram as rom. ram was also not synthesizing into a bram block and it was using lutram(s). the reason was simple once again,
+        we have to send the data from ram to processor within the same clock cycle. so whenever an address provided to ram, it has to output the data immediately. because of this,
+        read operation wasn't synchronous. non-synchronous implementation of ram doesn't synthesize into bram. exceeding resources once again.
+        </p>
+
+        <p>// conclusion on single cycle core</p>
+        <p> 
+        so single cycle implementation was great in simulation but it was not realistic. in simulation; all tests 
+        <a href="https://github.com/riscv-software-src/riscv-tests"><i>(riscv-tests)</i></a>
+        passed, i saw the expected result when i ran the mnist classifier but it is impossible to embed this design into fpga. that's when 
+        i decided to make the processor multi cycle.
+        the idea was dividing an instruction into different execution parts and turn our current logic into a finite state machine.
+        </p>
 
         <time>2026-05-21</time>
     </main>
     <footer>
-        <p><a href="../index.html"><i>../</i></a></p>
+        <p><a href="../index.html"><i>&lt;-</i></a></p>
     </footer>
 </body>
 </html>

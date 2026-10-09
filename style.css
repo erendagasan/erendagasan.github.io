@@ -18,7 +18,8 @@ html {
 
 body {
     font: 1em/var(--lh) monospace;
-    background: #f2f2f2;
+    background: #000000;
+    color: #fff;
     padding: 16vh 2em 0;
     display: grid;
     grid: 1fr / minmax(auto, 64ch);

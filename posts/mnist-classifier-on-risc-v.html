@@ -49,7 +49,7 @@
             </ol>
         </p>
 
-        <p>/// instruction fetch</p>
+        <p>// instruction fetch</p>
         <p>
         we've a rom module which has 64kb available space to store our instructions. in every clock cycle we should be able to fetch an instruction from our rom by 
         using our "program counter (pc)" address to execute it. 
@@ -76,7 +76,7 @@
         <p class="caption">:/</p>
        
 
-        <p>/// decode</p>
+        <p>// decode</p>
         <p>
         decode step is pretty straightforward. we divide the instruction into parts that we're going to use with our different operations.
         this logic is also implemented in combinational circuit since decoded information
@@ -84,7 +84,7 @@
         </p>
         
         
-        <p>/// execute, memory, write back</p>
+        <p>// execute, memory, write back</p>
         <p>
         we complete all these three steps in one procedural block. we execute the instruction then write the value back into the destination register.  
         this design also has its own flaws. the data from memory has to arrive processor, or reach ram within same clock cycle. as you can guess this causes clock frequency to

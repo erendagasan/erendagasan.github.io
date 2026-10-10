@@ -18,7 +18,8 @@ html {
 
 body {
     font: 1em/var(--lh) monospace;
-    background: #f2f2f2;
+    background: #000;
+    color: #fff;
     padding: 16vh 2em 0;
     display: grid;
     grid: 1fr / minmax(auto, 64ch);
@@ -48,30 +49,23 @@ img {
 }
 
 .caption {
-    color: #888;
+    color: #aaa;
     text-align: center;
     margin-top: .5em;
 }
 
-ul, ol { margin: 0 0 var(--lh) 2ch }
+ul, ol { margin-bottom: var(--lh) }
 
-ul { list-style: none }
+ul {
+    margin-left: 2ch;
+    list-style: none;
+}
 
 ul li { text-indent: -2ch }
 
 ul li:before { content: "* " }
 
-ol {
-    list-style: none;
-    counter-reset: item;
-}
-
-ol li {
-    counter-increment: item;
-    text-indent: -2ch;
-}
-
-ol li:before { content: counter(item) ". " }
+ol { margin-left: 3ch }
 
 a:active i { border: none }
 
